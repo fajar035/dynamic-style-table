@@ -3,7 +3,9 @@
   src: url('assets/Poppins-Regular.ttf'); /*URL to font*/
 }
 
-* {
+*,
+*:before,
+*:after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;

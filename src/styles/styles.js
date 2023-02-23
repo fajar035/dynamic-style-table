@@ -7,13 +7,13 @@ export const Wrapper = styled.section({
   justifyContent: 'center',
   alignItems: 'center',
   flexDirection: 'column',
-  backgroundColor: '#FFE7CC'
+  backgroundColor: '#fffff'
 });
 
 export const WrapperButton = styled.div({
   width: '70%',
   height: 'auto',
-  padding: '10px 0',
+  padding: '50px 0',
   display: 'flex',
   justifyContent: 'flex-end',
   gap: '15px'
@@ -21,6 +21,9 @@ export const WrapperButton = styled.div({
 
 export const Button = styled.button({
   width: '100px',
+  '&:nth-child(1)': {
+    width: '200px'
+  },
   height: '40px',
   position: 'relative',
   border: 'none',
@@ -43,7 +46,7 @@ export const Button = styled.button({
     flexDirection: 'column',
     transition: '0.3s',
     '> p': {
-      margin: '10px 0',
+      margin: '5px 0',
       fontSize: '16px',
       '&:hover': {
         color: '#674188'
@@ -55,7 +58,35 @@ export const Button = styled.button({
 export const BtnFilter = styled(Button)({
   backgroundColor: '#FFB84C',
   '> div': {
-    scale: ({ isOpenFilter }) => (isOpenFilter ? '1' : '0')
+    scale: ({ isOpenFilter }) => (isOpenFilter ? '1' : '0'),
+    '> form': {
+      width: '100%',
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      '> input': {
+        appearance: 'none',
+        backgroundColor: '#fff',
+        margin: '0',
+        font: 'inherit',
+        width: '1.15em',
+        height: '1.15em',
+        border: '1px solid black',
+        borderRadius: '50%',
+        transition: '0.3s box-shadow ease-in-out',
+        '&:checked': {
+          boxShadow: 'inset 1em 1em #D61355'
+        }
+      },
+
+      '> input, > label': {
+        cursor: 'pointer',
+        fontSize: '17px'
+      },
+      '> label:hover': {
+        color: '#D61355'
+      }
+    }
   }
 });
 
@@ -77,4 +108,44 @@ export const TableMarkup = styled.table`
   width: 70%;
   height: 50%;
   /* border: 1px solid black; */
+  border-colapse: collapse;
+  th,
+  td {
+    padding: 9px 21px;
+    border: 1px solid #cccccc;
+    border-spacing: 0;
+  }
+
+  th,
+  td:last-child {
+    border-rigth: 1px solid red;
+  }
+  td:first-child {
+    /* border-top: 1px solid #cccccc; */
+  }
+  /* Table Header */
+  thead th {
+    background-color: ${(props) =>
+      (props.themeCurrent && props.themeCurrent.headerColor) || '#2ECD71'};
+    color: ${(props) =>
+      (props.themeCurrent && props.themeCurrent.headerTextColor) || '#fffff'};
+  }
+
+  /*table Body */
+  tbody td {
+    color: ${(props) =>
+      (props.themeCurrent && props.themeCurrent.detailTextColor) || '#fffff'};
+  }
+  tbody tr {
+    background-color: ${(props) =>
+      (props.themeCurrent && props.themeCurrent.detailColor) || 'white'};
+  }
+  tbody tr:nth-child(odd) td {
+    /* background-color: #f5fff9; */
+  }
+  tbody tr:hover th,
+  tbody tr:hover td {
+    background-color: #f0f0f0;
+    transition: all 0.2s;
+  }
 `;
